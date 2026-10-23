@@ -1,0 +1,66 @@
+/* Fonts (self-hosted, latin subset) */
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('/fonts/familjen-grotesk-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('/fonts/familjen-grotesk-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* Recorder paper, red rulings, a blue ink pen and a red event pen. */
+  --c-bg: #eef1eb;
+  --c-fg: #121614;
+  --c-muted: #555e58;
+  --c-line: rgb(18 22 20 / 0.14);
+  --c-ruling: #d9806c;
+  --c-accent: #2b31c9;
+  --c-mark: #c42f1b;
+  --c-curtain: #e2e7df;
+
+  --f-display: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --f-body: 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --t-mega: clamp(3.6rem, 0.9rem + 12.6vw, 14.5rem);
+  --t-xl: clamp(2.4rem, 1.3rem + 4.6vw, 5.75rem);
+  --t-l: clamp(1.6rem, 1.15rem + 1.9vw, 2.9rem);
+  --t-m: clamp(1.2rem, 1.05rem + 0.6vw, 1.6rem);
+  --t-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --t-s: 0.875rem;
+  --t-xs: 0.75rem;
+
+  --u: clamp(0.5rem, 0.35rem + 0.6vw, 1rem);
+  --gutter: clamp(1rem, 0.6rem + 1.6vw, 2.5rem);
+  --gap: clamp(0.75rem, 0.4rem + 1.1vw, 1.75rem);
+  --cols: 12;
+  /* Phone: the strip is a narrow band on the left edge, content hangs from --hang. */
+  --strip-m: 48px;
+  --hang: 64px;
+
+  --radius: 0px;
+
+  --z-gl: 0;
+  --z-content: 1;
+  --z-header: 50;
+  --z-cursor: 80;
+  --z-curtain: 90;
+  --z-loader: 100;
+}

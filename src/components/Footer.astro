@@ -1,0 +1,19 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="footer wrap" id="contact">
+  <h2 class="label">Contact</h2>
+  <p class="footer__lead">Hiring for backend, reliability or applied AI work? Write to me, in English or Swedish.</p>
+  <a class="footer__cta" href={`mailto:${site.email}`}>
+    <span class="feed"><span>Email me</span><span aria-hidden="true">Email me</span></span><span class="footer__arrow" aria-hidden="true">↗</span>
+  </a>
+  <div class="footer__base">
+    <ul class="footer__links">
+      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+      {site.socials.map((s) => <li><a href={s.href} rel="me noopener" target="_blank">{s.label}</a></li>)}
+    </ul>
+    <p class="footer__place">{site.location}<br /><span class="mono">{site.coordinates}</span></p>
+    <p class="footer__colophon">© {year} {site.name}</p>
+  </div>
+</footer>

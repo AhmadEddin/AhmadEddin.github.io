@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import TestbedFigure from '../../components/TestbedFigure.astro';
+import { projects, site, type Project } from '../../data/site';
+
+export function getStaticPaths() {
+  return projects.map((p, i) => ({ params: { slug: p.slug }, props: { p, next: projects[(i + 1) % projects.length] } }));
+}
+const { p, next } = Astro.props as { p: Project; next: Project };
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: p.title,
+  description: p.summary,
+  author: { '@type': 'Person', name: site.name },
+  keywords: p.stack.join(', '),
+};
+---
+<Base title={p.title} description={`${p.summary.length > 158 ? p.summary.slice(0, p.summary.lastIndexOf(' ', 150)) + '…' : p.summary}`} current="work" jsonLd={jsonLd}>
+  <article>
+    <header class="case-hero wrap">
+      <span class="case-hero__event" data-event={p.event} aria-hidden="true"></span>
+      <a class="case-back feed rise" style="--d:0s" href="/#work"><span>All work</span><span aria-hidden="true">All work</span></a>
+      <p class="case-org rise" style="--d:0.05s">{p.org}, {p.years}</p>
+      <h1 class="case-title rise rise--clip" style="--d:0.1s">{p.title}</h1>
+      <p class="case-sum rise" style="--d:0.3s">{p.summary}</p>
+      <dl class="case-meta rise" style="--d:0.45s">
+        <div><dt>Role</dt><dd>{p.role}</dd></div>
+        <div><dt>Stack</dt><dd>{p.stack.join(', ')}</dd></div>
+        <div><dt>On the trace</dt><dd class="mark">{p.eventNote}</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-body wrap">
+      {p.body.map((b, i) => (
+        <>
+          <section class="case-sec">
+            <h2>{b.heading}</h2>
+            <p data-split="lines">{b.text}</p>
+          </section>
+          {p.figure && i === 1 && (
+            <div class="case-fig"><TestbedFigure /></div>
+          )}
+        </>
+      ))}
+    </div>
+
+    <nav class="next wrap" aria-label="Next project">
+      <p class="label">Next project</p>
+      <a class="next__link feed" href={`/work/${next.slug}/`}>
+        <span>{next.title}</span><span aria-hidden="true">{next.title}</span>
+      </a>
+      <p class="next__org">{next.org}</p>
+    </nav>
+  </article>
+</Base>

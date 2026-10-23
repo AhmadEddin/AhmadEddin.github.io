@@ -1,0 +1,24 @@
+---
+import { site } from '../data/site';
+interface Props { current?: 'work' }
+const { current } = Astro.props;
+const nav = [
+  { label: 'Work', href: '/#work', spy: 'work' },
+  { label: 'Experience', href: '/#experience', spy: 'experience' },
+  { label: 'Contact', href: '#contact', spy: 'contact' },
+];
+---
+<header class="frame">
+  <a class="frame__name feed" href="/"><span>{site.name}</span><span aria-hidden="true">{site.name}</span></a>
+  <nav class="frame__nav" aria-label="Main">
+    <ul>
+      {nav.map((n) => (
+        <li>
+          <a class="feed" href={n.href} data-spy={n.spy} aria-current={current === n.spy ? 'true' : undefined}>
+            <span>{n.label}</span><span aria-hidden="true">{n.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
