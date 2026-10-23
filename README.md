@@ -22,12 +22,3 @@ npm run preview      # serve dist/ locally
   `figure.html` and `figure.json`; `live.ts` runs the loop. After changing the build script:
   `node src/figures/testbed/build.mjs`.
 - `src/engine/`: motion plumbing (Lenis, GSAP, page lifecycle). Rarely needs edits.
-
-## Before deploying
-
-1. Set the real domain in `astro.config.mjs` (`site`), `src/data/site.ts` (`site.url`) and
-   `public/robots.txt`.
-2. `npm run build`, then regenerate `public/og.png` from the built hero if the hero changed, and
-   build again.
-3. Deploy `dist/` to any static host, for example `npx vercel --prod` or
-   `npx netlify deploy --prod --dir dist`.
